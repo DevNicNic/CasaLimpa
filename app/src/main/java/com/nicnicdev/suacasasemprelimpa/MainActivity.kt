@@ -29,17 +29,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-
-
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.nicnicdev.suacasasemprelimpa.navigation.Screen
+import com.nicnicdev.suacasasemprelimpa.navigation.SetupNavGraph
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController() // criando o NavController
             SuaCasaSempreLimpaTheme {
+                SetupNavGraph(navController = navController) // configurando a navegação
                 // A surface container using the 'background' color from the theme
-                MyFirstScreen()
+                MyFirstScreen(navController = navController)
             }
         }
     }
@@ -47,7 +51,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyFirstScreen() {
+fun MyFirstScreen(navController: NavHostController) {
     var login by remember { mutableStateOf("") } // estado para login
     var password by remember { mutableStateOf("") } // estado para senha
 
@@ -121,7 +125,9 @@ fun MyFirstScreen() {
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally) //deixa o botão centralizado
                     .padding(bottom = 40.dp), //espaçamento do rodapé
-                onClick = {/*Ação do botão*/ }
+                onClick = {
+                    navController.navigate(Screen.Register.route) //Navegar para a tela de cadastro
+                }
             ) {
                 Text(text = "CADASTRE - SE")
             }
@@ -132,8 +138,9 @@ fun MyFirstScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewMyFirstScreen() {
+    val navController = rememberNavController() // cria uma navController para o preview
     SuaCasaSempreLimpaTheme {
-        MyFirstScreen()
+        MyFirstScreen(navController = navController)
     }
 }
 
