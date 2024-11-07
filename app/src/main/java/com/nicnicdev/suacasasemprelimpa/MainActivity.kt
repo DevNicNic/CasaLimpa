@@ -1,7 +1,9 @@
 package com.nicnicdev.suacasasemprelimpa
 
+import SetupNavGraph
 import androidx.compose.material3.Button
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -31,8 +33,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.nicnicdev.suacasasemprelimpa.navigation.Screen
-import com.nicnicdev.suacasasemprelimpa.navigation.SetupNavGraph
 
 
 class MainActivity : ComponentActivity() {
@@ -41,9 +41,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController() // criando o NavController
             SuaCasaSempreLimpaTheme {
-                SetupNavGraph(navController = navController) // configurando a navegação
-                // A surface container using the 'background' color from the theme
-                MyFirstScreen(navController = navController)
+                SetupNavGraph(navController = navController) // passando o navControler
+
             }
         }
     }
@@ -123,9 +122,10 @@ fun MyFirstScreen(navController: NavHostController) {
 
             Button(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally) //deixa o botão centralizado
-                    .padding(bottom = 40.dp), //espaçamento do rodapé
+                    .align(Alignment.CenterHorizontally), //deixa o botão centralizado
+
                 onClick = {
+                    Log.d("Navigation", "Navegando para a tela de cadastro")
                     navController.navigate(Screen.Register.route) //Navegar para a tela de cadastro
                 }
             ) {

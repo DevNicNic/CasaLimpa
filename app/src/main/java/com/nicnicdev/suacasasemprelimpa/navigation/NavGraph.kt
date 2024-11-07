@@ -1,4 +1,3 @@
-package com.nicnicdev.suacasasemprelimpa.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -9,8 +8,8 @@ import com.nicnicdev.suacasasemprelimpa.MyFirstScreen
 
 // Definição das rotas da navegação
 sealed class Screen(val route: String) {
-    object Main : Screen("main_screen")
-    object Register : Screen("register_screen")
+    data object Main : Screen("main_screen")
+    data object Register : Screen("register_screen")
 }
 @Composable
 fun SetupNavGraph(navController: NavHostController ) {
