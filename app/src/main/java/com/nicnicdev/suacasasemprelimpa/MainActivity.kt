@@ -109,7 +109,14 @@ fun MyFirstScreen(navController: NavHostController) {
                 )
                 // botão entrar 
                 Button(
-                    onClick = { /* Ação ao clicar em Entrar*/ },
+                    onClick = {
+
+                        Log.d(
+                            "Navigation",
+                            "Navegando para tela de agendamento de tarefas"
+                        ) // log para confirmar que o botão foi clicado
+                        navController.navigate(Screen.ButtonsVertical.route) // navega para a terceira tela
+                    },
                     modifier = Modifier
                         .padding(top = 26.dp) // largura extra acima do botão
                         .width(200.dp) // largura do botão
