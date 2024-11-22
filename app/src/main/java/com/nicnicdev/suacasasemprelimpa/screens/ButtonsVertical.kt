@@ -55,8 +55,6 @@ fun BotaoComImagem(
                 .align(Alignment.CenterHorizontally),
             )
     }
-
-
 }
 
 @Composable
@@ -89,7 +87,6 @@ fun ButtonsVerticalScreen() {
             recursoImagem = R.drawable.imagem3,
             onClick = {/* ação do terceiro botão*/ }
         )
-
     }
 }
 

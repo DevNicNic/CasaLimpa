@@ -28,6 +28,5 @@ fun SetupNavGraph(navController: NavHostController ) {
         composable(route = Screen.ButtonsVertical.route) {
             ButtonsVerticalScreen() //Terceira tela
         }
-
     }
 }
