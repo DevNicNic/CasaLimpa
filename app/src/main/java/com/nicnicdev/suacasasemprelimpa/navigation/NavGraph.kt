@@ -5,11 +5,13 @@ import com.nicnicdev.suacasasemprelimpa.screens.RegisterScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.nicnicdev.suacasasemprelimpa.MyFirstScreen
+import com.nicnicdev.suacasasemprelimpa.screens.ButtonsVerticalScreen
 
 // Definição das rotas da navegação
 sealed class Screen(val route: String) {
     data object Main : Screen("main_screen")
     data object Register : Screen("register_screen")
+    data object ButtonsVertical : Screen("buttons_vertical_screen")
 }
 @Composable
 fun SetupNavGraph(navController: NavHostController ) {
@@ -22,6 +24,9 @@ fun SetupNavGraph(navController: NavHostController ) {
         }
         composable(route = Screen.Register.route) {
             RegisterScreen (navController = navController) //tela de cadastro
+        }
+        composable(route = Screen.ButtonsVertical.route) {
+            ButtonsVerticalScreen() //Terceira tela
         }
 
     }
