@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +32,9 @@ fun BotaoComImagem(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+
     ) {
         Button(
             onClick = onClick,
@@ -40,18 +44,19 @@ fun BotaoComImagem(
             Text(text = textoBotao)
         }
 
-        Spacer(modifier = Modifier.height(1.dp)) //espaçamento entre o botão e a imagem
+        Spacer(modifier = Modifier.height(0.dp)) //espaçamento entre o botão e a imagem
+
 
         Image(
             painter = painterResource(id = recursoImagem),
             contentDescription = descricaoImagem,
             modifier = Modifier
                 .size(240.dp) // define o tamanho da imagem
-                . align(Alignment.CenterHorizontally),
-            contentScale = ContentScale.Crop
-
-        )
+                .align(Alignment.CenterHorizontally),
+            )
     }
+
+
 }
 
 @Composable
@@ -59,6 +64,7 @@ fun ButtonsVerticalScreen() {
     Column(
         Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(vertical = 32.dp, horizontal = 16.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -80,14 +86,15 @@ fun ButtonsVerticalScreen() {
         BotaoComImagem(
             textoBotao = "Agendar Tarefas Semanais",
             descricaoImagem = "Imagem para Agendar Tarefas Samanais",
-            recursoImagem = R.drawable.imagem1,
+            recursoImagem = R.drawable.imagem3,
             onClick = {/* ação do terceiro botão*/ }
         )
+
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ButtonsVerticalScreesnPreview(){
+fun ButtonsVerticalScreenPreview() {
     ButtonsVerticalScreen()
 }
